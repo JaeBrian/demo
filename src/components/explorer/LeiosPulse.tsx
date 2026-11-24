@@ -179,8 +179,8 @@ function MusashiPulse() {
       {rows.length > 0 && (
         <>
           <div className="leios-key">
-            <span className="leios-purple">Bar: announced manifest size</span>
-            <span className="leios-teal">◆ Certificate carried</span>
+            <span className="leios-key-bar">Bar: announced manifest size</span>
+            <span className="leios-key-certificate">◆ Certificate carried</span>
             <span>Oldest to newest. Select a block to inspect it.</span>
           </div>
           <div

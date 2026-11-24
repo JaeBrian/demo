@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createToolForms, type ToolFormKind } from "../../lib/chain/toolForms";
 import { ProductArt, type ProductArtKind } from "./ProductArt";
+import { canUseWebGL } from "../../lib/chain/webgl";
 
 // Every tile shares one renderer; it is made for the first and freed with the last.
 let stage: ReturnType<typeof createToolForms> | null = null;
@@ -30,7 +31,7 @@ const drawings: Record<ToolFormKind, ProductArtKind> = {
  */
 export function ToolArt({ kind }: { kind: ToolFormKind }) {
   const canvas = useRef<HTMLCanvasElement>(null);
-  const [supported] = useState(() => "WebGLRenderingContext" in window);
+  const [supported] = useState(canUseWebGL);
   useEffect(() => {
     const target = canvas.current;
     if (!target || !supported) return;

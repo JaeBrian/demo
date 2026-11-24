@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { Link } from "../NetworkLink";
 import { createChainScene, type ChainBlock } from "../../lib/chain/chainScene";
 import "./chain-scene.css";
+import { canUseWebGL } from "../../lib/chain/webgl";
 
 const describe = (block: ChainBlock) =>
   `${block.tx_count.toLocaleString()} ${block.tx_count === 1 ? "transaction" : "transactions"}, ${(block.size / 1024).toFixed(1)} KB`;
@@ -15,7 +16,7 @@ export default function ChainScene({ blocks }: { blocks: ChainBlock[] }) {
   const scene = useRef<ReturnType<typeof createChainScene> | null>(null);
   const [hover, setHover] = useState<{ block: ChainBlock; x: number; y: number } | null>(null);
   // Without WebGL the block links below carry the same information.
-  const [failed] = useState(() => !("WebGLRenderingContext" in window));
+  const [failed] = useState(() => !canUseWebGL());
 
   useEffect(() => {
     if (!canvas.current || !callout.current || failed) return;

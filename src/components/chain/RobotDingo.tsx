@@ -1,5 +1,6 @@
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { createRobotDingo } from "../../lib/chain/robotDingo";
+import { canUseWebGL } from "../../lib/chain/webgl";
 
 // Matches the rule in ui.css that shows it. Below this the scene is never built.
 const ROOM = "(min-width: 901px) and (min-height: 760px)";
@@ -9,7 +10,7 @@ const subscribe = (notify: () => void) => {
   return () => query?.removeEventListener("change", notify);
 };
 const hasRoom = () =>
-  "WebGLRenderingContext" in window && (window.matchMedia?.(ROOM).matches ?? false);
+  (window.matchMedia?.(ROOM).matches ?? false) && canUseWebGL();
 
 /** Decorative. The sidebar footer beside it carries the same words for readers. */
 export default function RobotDingo() {

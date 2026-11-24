@@ -3396,3 +3396,34 @@
     padding-right: 24px;
   }
 }
+
+/* Rules for classes still in use whose original declarations were dropped. */
+/* Leios legend entries take the colour of the mark they describe. */
+.leios-key-bar {
+  color: var(--viz-1);
+}
+.leios-key-certificate {
+  color: var(--text);
+}
+.network-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.network-value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 192px), 1fr));
+  gap: 0 24px;
+  padding: 8px 24px 16px;
+}
+.empty-orbit {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  color: var(--accent);
+  font-size: 24px;
+}

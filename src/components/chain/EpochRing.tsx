@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { createEpochRing } from "../../lib/chain/epochRing";
+import { canUseWebGL } from "../../lib/chain/webgl";
 
 /** Decorative: the epoch meter beside it carries the same value for readers. */
 export default function EpochRing({ progress }: { progress: number }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const ring = useRef<ReturnType<typeof createEpochRing> | null>(null);
-  const [supported] = useState(() => "WebGLRenderingContext" in window);
+  const [supported] = useState(canUseWebGL);
 
   useEffect(() => {
     if (!canvas.current || !supported) return;

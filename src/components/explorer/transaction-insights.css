@@ -750,3 +750,54 @@
 .ti-passport .metric-grid > .metric-wide {
   grid-column: auto;
 }
+
+/* Pending transaction passport */
+.ti-passport-top,
+.ti-passport-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.ti-passport-heading p {
+  max-width: 640px;
+  margin-top: 8px;
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.ti-passport-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.ti-passport-metrics > div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  align-content: start;
+}
+.ti-passport-metrics strong {
+  color: var(--text);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+}
+.ti-passport-metrics span {
+  color: var(--text-3);
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .ti-passport-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.ti-address-kind.script {
+  color: var(--viz-4);
+}
+.ti-budget.cpu i {
+  background: var(--accent);
+}

@@ -383,3 +383,9 @@
     height: 120px;
   }
 }
+
+.header-history-range {
+  color: var(--text-3);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
