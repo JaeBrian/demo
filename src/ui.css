@@ -3427,3 +3427,7 @@
   color: var(--accent);
   font-size: 24px;
 }
+/* Long identifiers (a bech32 DRep id) wrap inside narrow tool panels. */
+.tool-form code {
+  overflow-wrap: anywhere;
+}
