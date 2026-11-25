@@ -25,7 +25,8 @@ const FAMILY_COLOR: Record<string, string> = {
   "cardano-node": "var(--gray-8)",
   dingo: "var(--accent)",
   amaru: "var(--viz-4)",
-  "gerolamo-bean": "var(--viz-2)",
+  gerolamo: "var(--viz-2)",
+  "cardano-bean": "var(--viz-2)",
   tsunagi: "var(--viz-6)",
   unknown: "var(--viz-5)",
 };
@@ -398,7 +399,8 @@ export function HeaderVersionChart({
           CIP-203 ↗
         </a>
         ). Identities come from the registry or documented historical signals.
-        Payloads without a supported definition remain opaque. ID 67 can be Gerolamo or cardano-bean.
+        Payloads without a supported definition remain opaque. IDs 42, 67 and
+        79 identify Gerolamo, cardano-bean and TSUNAGI.
         Unsignalled blocks are assumed Haskell; explicit opt-outs, unregistered
         IDs and unsupported schemes stay unidentified. Signals are
         self-reported.

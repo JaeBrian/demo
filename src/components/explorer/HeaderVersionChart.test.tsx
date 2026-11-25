@@ -227,6 +227,17 @@ it("gives each Haskell header version its own labelled row in one family colour"
     await close();
   }
 });
+it("keeps Gerolamo and cardano-bean in one chart colour", async () => {
+  const { host, close } = await render([record(1, "42"), record(2, "67")]);
+  try {
+    const fills = [
+      ...host.querySelectorAll<HTMLElement>(".header-node-bar i"),
+    ].map((bar) => bar.style.background);
+    expect(fills).toEqual(["var(--viz-2)", "var(--viz-2)"]);
+  } finally {
+    await close();
+  }
+});
 it("displays packed producer signals consistently in the chart and inspection list", async () => {
   const { host, close } = await render([
     record(1, "315973"),
@@ -239,7 +250,7 @@ it("displays packed producer signals consistently in the chart and inspection li
     const legend = host.querySelector(".header-node-legend")!;
     expect(legend.textContent).toContain("Dingo");
     expect(legend.textContent).toContain("Amaru");
-    expect(legend.textContent).toContain("Gerolamo / cardano-bean");
+    expect(legend.textContent).toContain("cardano-bean");
     expect(legend.textContent).toContain("Identity withheld");
     expect(legend.textContent).toContain("Unsupported scheme 1");
     const dingo = [
