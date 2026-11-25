@@ -15,7 +15,7 @@ import {
   type Material,
 } from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
-import { studioEnvironment, tokenReader } from "./studio";
+import { lightScene, tokenReader } from "./studio";
 
 export type ToolFormKind =
   | "transactions"
@@ -47,8 +47,7 @@ export function createToolForms(host: Element) {
   const renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.toneMapping = NeutralToneMapping;
   const scene = new Scene();
-  const environment = studioEnvironment(renderer, accent, area);
-  scene.environment = environment;
+  const environment = lightScene(renderer, scene, accent, area);
   const key = new DirectionalLight(0xffffff, 1.6);
   key.position.set(-3, 6, 4);
   scene.add(key);

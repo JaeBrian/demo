@@ -20,7 +20,7 @@ import {
   WebGLRenderer,
 } from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
-import { studioEnvironment } from "./studio";
+import { lightScene } from "./studio";
 
 export interface ChainBlock {
   hash: string;
@@ -84,8 +84,9 @@ export function createChainScene(canvas: HTMLCanvasElement, options: Options) {
   const scene = new Scene();
   const accent = token("--accent");
   // The same studio the other 3D objects on the site reflect.
-  const environment = studioEnvironment(renderer, accent, token("--area-explore"));
-  scene.environment = environment;
+  const environment = lightScene(renderer, scene, accent, token("--area-explore"), () => {
+    if (!raf) raf = requestAnimationFrame(tick);
+  });
   // Orthographic, so equal block sizes read as equal wherever they sit in the
   // row. The row recedes from the newest block, front right, to the oldest.
   const camera = new OrthographicCamera(-1, 1, 1, -1, 0.1, 100);

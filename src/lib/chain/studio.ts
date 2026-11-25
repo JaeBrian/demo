@@ -55,3 +55,30 @@ export function studioEnvironment(renderer: WebGLRenderer, first: Color, second:
   pmrem.dispose();
   return texture;
 }
+
+/**
+ * Lights a scene with the studio room. A browser can drop a WebGL context and
+ * hand it back empty, so the room is rendered again when that happens.
+ */
+export function lightScene(
+  renderer: WebGLRenderer,
+  scene: Scene,
+  first: Color,
+  second: Color,
+  redraw?: () => void,
+) {
+  const canvas = renderer.domElement;
+  let texture = (scene.environment = studioEnvironment(renderer, first, second));
+  const restore = () => {
+    texture.dispose();
+    texture = scene.environment = studioEnvironment(renderer, first, second);
+    redraw?.();
+  };
+  canvas.addEventListener("webglcontextrestored", restore);
+  return {
+    dispose() {
+      canvas.removeEventListener("webglcontextrestored", restore);
+      texture.dispose();
+    },
+  };
+}

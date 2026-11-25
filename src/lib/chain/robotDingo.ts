@@ -29,7 +29,7 @@ import {
   type Material,
 } from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
-import { studioEnvironment } from "./studio";
+import { lightScene } from "./studio";
 
 interface Options {
   reducedMotion: boolean;
@@ -49,8 +49,9 @@ export function createRobotDingo(canvas: HTMLCanvasElement, options: Options) {
   renderer.toneMapping = NeutralToneMapping;
 
   const scene = new Scene();
-  const environment = studioEnvironment(renderer, new Color(0xffe2c4), new Color(0xffffff));
-  scene.environment = environment;
+  const environment = lightScene(renderer, scene, new Color(0xffe2c4), new Color(0xffffff), () =>
+    render(),
+  );
   scene.environmentIntensity = 0.5;
   const camera = new PerspectiveCamera(26, 1, 0.1, 50);
   camera.position.set(0.5, 2.9, 8.6);

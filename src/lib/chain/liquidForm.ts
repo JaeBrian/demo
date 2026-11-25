@@ -9,7 +9,7 @@ import {
   TorusKnotGeometry,
   WebGLRenderer,
 } from "three";
-import { studioEnvironment, tokenReader } from "./studio";
+import { lightScene, tokenReader } from "./studio";
 
 export type LiquidShape = "liquid" | "ring" | "knot" | "block" | "coin";
 
@@ -35,8 +35,7 @@ export function createLiquidForm(
 
   const scene = new Scene();
   const [first, second] = tokens.map(token);
-  const environment = studioEnvironment(renderer, first, second);
-  scene.environment = environment;
+  const environment = lightScene(renderer, scene, first, second, () => wake());
   const camera = new PerspectiveCamera(32, 1, 0.1, 50);
   camera.position.set(0, 0, 6.4);
 
