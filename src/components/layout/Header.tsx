@@ -1,4 +1,4 @@
-import { lazy, Suspense, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { mainNavigation, normalizePath } from "../../lib/navigation";
 import { useLocation } from "react-router";
 import { Link } from "../NetworkLink";
@@ -6,8 +6,6 @@ import { NodeHealthStrip } from "./NodeHealthStrip";
 import { GlobalLookup } from "./GlobalLookup";
 import { NetworkSwitcher } from "./NetworkSwitcher";
 import { Icon } from "../Icon";
-
-const RobotDingo = lazy(() => import("../chain/RobotDingo"));
 
 function Sidebar({ pathname }: { pathname: string }) {
   const [open, setOpen] = useState(false);
@@ -64,9 +62,6 @@ function Sidebar({ pathname }: { pathname: string }) {
           </Link>
         ))}
       </nav>
-      <Suspense fallback={null}>
-        <RobotDingo />
-      </Suspense>
       <div className="sidebar-footer">
         <span className="live-dot" /> Powered by Dingo
       </div>

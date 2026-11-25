@@ -3355,26 +3355,6 @@
 .workspace-main .visual-grid > .data-panel > .panel-content > .bar-chart > .chart-plot { flex: 1; height: auto; min-height: 180px; }
 .workspace-main .showcase-intro + .wallet-transfer-layout { margin-top: 12px; }
 
-/* Discover: the robot dingo stands on its power brick at the foot of the sidebar */
-.robot-dingo { display: none; }
-@media (min-width: 901px) and (min-height: 760px) {
-  .sidebar .robot-dingo {
-    display: block;
-    width: 200px;
-    height: 232px;
-    margin: auto auto 8px;
-  }
-  /* The brick carries the words, so the text label is kept for screen readers only. */
-  .sidebar .robot-dingo + .sidebar-footer {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-}
-
 /* Home hero stat row runs edge to edge, so a hovered tile fills to the panel edge. */
 .workspace-main .experience-hero .experience-pulse {
   margin-inline: -48px;

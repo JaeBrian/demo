@@ -141,11 +141,12 @@ export default function Experiences() {
     <div className="experience-page">
       <section className="experience-hero">
         <div>
-          <h1>Cardano apps, served by one Dingo node</h1>
+          <h1>Cardano apps, served by Dingo</h1>
           <p>
-            Everything in this workspace reads from and submits to Dingo's own
-            APIs on {DINGO_NETWORK.label}: the explorer, swaps, token tools and
-            governance. No external indexer, and no wallet until you sign.
+            Each network here has its own Dingo node. On {DINGO_NETWORK.label},
+            the explorer, swaps, token tools and governance read from and
+            submit to that node's APIs. No external indexer, and no wallet
+            until you sign.
           </p>
           <div className="experience-actions">
             <Link
